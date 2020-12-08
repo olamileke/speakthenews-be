@@ -1,5 +1,6 @@
 from flask_restful import Resource, reqparse
 import re
+import scrapers.nytimes as nytimes
 
 def is_url(value, name):
     if re.match('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[-/\\w .?=&]*/?', value) is None:
@@ -11,6 +12,7 @@ class Text(Resource):
     def get(self):
         parser = reqparse.RequestParser(bundle_errors=True)
         parser.add_argument('url', type=is_url, location='args', required=True)
-        args = parser.parse_args()
+        url = parser.parse_args()['url']
 
-        return {'url':args['url']}, 200
+        if re.match('https://(www.)*nytimes.com/.+', url) is not None:
+            return nytimes.scrape(url)
