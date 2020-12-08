@@ -1,0 +1,9 @@
+
+# virtual machine
+venv
+
+# Pycache folder
+__pycache__
+
+# relevant environment variables
+.env
