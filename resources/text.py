@@ -5,9 +5,10 @@ import scrapers.politico as politico
 import scrapers.economist as economist
 import scrapers.w_post as w_post
 
+# custom regex validator to make sure the user entered a valid url
 def is_url(value, name):
     if re.match('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[-/\\w .?=&]*/?', value) is None:
-        raise ValueError('{0} is an invalid url'.format(value))
+        raise ValueError('{0} is not a valid url'.format(value))
 
     return value
 

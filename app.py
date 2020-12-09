@@ -22,7 +22,7 @@ def enable_cors(response):
 def error_404(error):
     return {'message':'endpoint does not exist'}, 404
 
-api.add_resource(Text, '/text')
+api.add_resource(Text, '/api/v1/text')
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
