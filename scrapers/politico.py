@@ -96,10 +96,10 @@ def validate_state_paragraphs(class_name):
 def scrape(url):
     # a bit of validation to exclude politico video and newsletter links
     if re.match('https://(www.)*politico.com/video(.*)', url) is not None:
-        return {'message':'sorry. I do not scrape politico video links'}, 400
+        return {'message':'politico video links cannot be processed'}, 400
 
     elif re.match('https://(www.)*politico.com/newsletters(.*)', url) is not None:
-        return {'message':'sorry. I do not scrape politico newsletter links'}, 400
+        return {'message':'politico newsletter links cannot be processed'}, 400
 
     else:
         try:

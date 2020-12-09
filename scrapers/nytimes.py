@@ -59,10 +59,10 @@ def parse_text(soup, url):
 def scrape(url):
     # making sure that it is not an nytimes live or interactive url
     if re.match('https://(www.)*nytimes.com/live(.*)', url) is not None:
-        return {'message':'sorry. I do not scrape nytimes live blogs.'}, 400
+        return {'message':'nytimes live blogs cannot be processed'}, 400
 
     elif re.match('https://(www.)*nytimes.com/interactive(.*)', url) is not None:
-        return {'message':'sorry. I do not scrape nytimes interactive articles.'}, 400
+        return {'message':'nytimes interactive articles cannot be processed'}, 400
 
     else:
         try:
