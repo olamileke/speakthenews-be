@@ -40,6 +40,7 @@ def parse_text(soup, url):
     return marshal(data, output_field, envelope='data')
 
 def scrape(url):
+    # validation to make sure the user did not enter an economist weekly edition url
     if re.match('https://(www.)*economist.com/weeklyedition(.*)', url) is not None:
         return {'message':'economist weekly edition articles cannot be processed'}, 400
 

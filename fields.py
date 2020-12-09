@@ -1,12 +1,5 @@
 from flask_restful import fields
 
-# custom formatting on the Summary attribute
-class Summary(fields.Raw):
-    def format(self, value):
-        if value is None or value == '':
-            return None
-        return value
-
 # custom formatting on the Image attribute
 class Image(fields.Raw):
     def format(self, value):
@@ -18,7 +11,7 @@ class Image(fields.Raw):
 base_field = {
     'url':fields.String(attribute='url'),
     'title':fields.String(attribute='article_title'),
-    'summary':Summary(attribute='article_summary', default=None),
+    'summary':fields.String(attribute='article_summary', default=None),
     'content':fields.String(attribute='article_text'),
     'image':Image(attribute='article_picture')
 }

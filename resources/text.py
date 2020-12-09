@@ -3,6 +3,7 @@ import re
 import scrapers.nytimes as nytimes
 import scrapers.politico as politico
 import scrapers.economist as economist
+import scrapers.w_post as w_post
 
 def is_url(value, name):
     if re.match('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[-/\\w .?=&]*/?', value) is None:
@@ -24,3 +25,8 @@ class Text(Resource):
 
         if re.match('https://(www.)*economist.com/.+', url) is not None:
             return economist.scrape(url)
+
+        if re.match('https://(www.)*washingtonpost.com/.+', url) is not None:
+            return w_post.scrape(url)
+
+        return {'message':'{0} cannot be processed'.format(url)}, 400
