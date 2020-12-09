@@ -1,17 +1,12 @@
 # nytimes scraper to fetch the contents of an nytime article
 
-from flask_restful import fields, marshal
+from flask_restful import marshal
+from fields import base_field
 from bs4 import BeautifulSoup, Tag
 from urllib.request import Request, urlopen
 import re
 
-output_field = {
-    'url':fields.String(attribute='url'),
-    'title':fields.String(attribute='article_title'),
-    'summary':fields.String(attribute='article_summary'),
-    'content':fields.String(attribute='article_text'),
-    'image':fields.String(attribute='article_picture')
-}
+output_field = base_field.copy()
 
 # formatting the text in the format we want
 def parse_text(soup, url):
@@ -51,10 +46,10 @@ def parse_text(soup, url):
         article_text = article_text + block_text
 
     # removing the unicode characters that show up when converted to json
-    article_title = re.sub(u"(\u2019|\u201d)|\u201c|\u2014", '', article_title)
-    article_summary = re.sub(u"(\u2019|\u201d)|\u201c|\u2014", '', article_summary)
-    article_picture = re.sub(u"(\u2019|\u201d)|\u201c|\u2014", '', article_picture)
-    article_text = re.sub(u"(\u2019|\u201d)|\u201c|\u2014", '', article_text)
+    article_title = re.sub(u"(\u2019|\u201d|\u2018)|\u201c|\u2014|\u00e8|\u2026", '', article_title)
+    article_summary = re.sub(u"(\u2019|\u201d|\u2018)|\u201c|\u2014|\u00e8|\u2026", '', article_summary)
+    article_picture = re.sub(u"(\u2019|\u201d|\u2018)|\u201c|\u2014|\u00e8|\u2026", '', article_picture)
+    article_text = re.sub(u"(\u2019|\u201d|\u2018)|\u201c|\u2014|\u00e8|\u2026", '', article_text)
 
     data = {'article_title':article_title, 'article_summary':article_summary, 
     'article_picture':article_picture, 'article_text':article_text, 'url':url}
