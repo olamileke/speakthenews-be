@@ -1,6 +1,6 @@
 ### speakthenews-be
 ---
-So I turned some of the scripts found [here](https://github.com/olamileke/web-scraping "here") into a REST API. It returns the title, summary, content and image of any [nytimes](https://nytimes.com "nytimes"), [washington post](https://washingtonpost.com "washington post"),[politico](https://politico.com "politico")
+So I turned some of the scripts found [here](https://github.com/olamileke/web-scraping "here") into a REST API. It returns the title, summary, content and image of any [nytimes](https://nytimes.com "nytimes"), [washington post](https://washingtonpost.com "washington post"), [politico](https://politico.com "politico")
 and [economist](https://economist.com "economist") article passed in as a query parameter.It is written in Flask-Restful and its functionality is exposed via a single /api/v1/text endpoint like
 
 ```
