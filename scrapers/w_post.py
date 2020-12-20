@@ -36,7 +36,7 @@ def parse_text(soup, url):
     splits = article_picture.split('&w=')
 
     if len(splits) == 2:
-        article_picture = splits[1]
+        article_picture = splits[0]
 
     # removing the Read More extra tabs at the end
     read_start_index = article_text.find('Read more')
