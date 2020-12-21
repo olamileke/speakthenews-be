@@ -7,8 +7,7 @@ and [economist](https://economist.com "economist") article passed in as a query 
 https://speakthenews.herokuapp.com/api/v1/text?url=xyz
 ```
 
-I am currently working on a front end to consume this, which would allow users to create playlists of articles and have the articles read out to them.
-The front end is written in React and is found [here](https://github.com/olamileke/speakthenews-fe "here").
+The front end is written in React and is found [here](https://github.com/olamileke/speakthenews-fe "here") while the live application can be found [here](https://speakthenews.netlify.app "here"). It enables users to create playlists of articles and have the articles read out to them.
 
 To run this application locally, you need to have python3+ on your system. Get it 
 [here](https://https://www.python.org/downloads/ "here"). Make sure to add python.exe to your operating system path variables to be able to run python scripts from the command line.
